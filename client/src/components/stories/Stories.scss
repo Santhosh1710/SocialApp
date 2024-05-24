@@ -1,0 +1,69 @@
+@use "../../style.scss" as *;
+
+.stories {
+  @include themify($themes) {
+    display: flex;
+    gap: 10px;
+    height: 250px;
+    margin-bottom: 30px;
+
+    @include mobile {
+      height: 70px;
+      justify-content: space-between;
+      overflow-x: scroll;
+    }
+
+    @include tablet{
+      height: 100px;
+      gap: 12px;
+    }
+    .story {
+      flex: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      @include mobile {
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        flex: none;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      span {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: white;
+        @include mobile{
+            display: none;
+        }
+      }
+      button { 
+        position: absolute;
+        bottom: 30px;
+        left: 10px;
+        color: white;
+        background-color: rgb(56, 106, 245);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include mobile{
+            bottom: 0;
+            right: 0;
+            left: auto;
+            z-index: 9999;
+        }
+      }
+    }
+  }
+}
