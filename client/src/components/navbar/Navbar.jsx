@@ -31,7 +31,7 @@ function Navbar() {
             </div>
             <div className="search">
                 <SearchOutlinedIcon />
-                <input type="text" placeholder='Search' />
+                <input type="text" placeholder='Search' id='searchBar'/>
             </div>
             <div className="right">
                 <PersonOutlinedIcon className='icon'/>

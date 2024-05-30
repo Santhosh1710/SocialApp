@@ -1,32 +1,26 @@
-import React from 'react'
-import './Posts.scss'
-import Post from '../post/Post'
+import React from "react";
+import "./Posts.scss";
+import Post from "../post/Post";
+import { useQuery } from "@tanstack/react-query";
+import { makeRequest } from "../../axios";
+
 function Posts() {
-  const posts = [
-    {
-      id: 1,
-      name: 'John Doe',
-      userId: 1,
-      profilePic: 'https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      img: 'https://images.pexels.com/photos/1037989/pexels-photo-1037989.jpeg?cs=srgb&dl=pexels-hannah-nelson-390257-1037989.jpg&fm=jpg'
+  const { isLoading, error, data } = useQuery({
+    queryKey: ['posts'],
+    queryFn: async () => {
+      const res = await makeRequest.get("/posts");
+      return res.data; 
     },
-    {
-      id: 2,
-      name: 'John Doe',
-      userId: 2,
-      profilePic: 'https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1600',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      img: 'https://images.pexels.com/photos/1406864/pexels-photo-1406864.jpeg?cs=srgb&dl=pexels-minan1398-1406864.jpg&fm=jpg'
-    }
-  ];
+  });
   return (
     <div className="posts">
-      {posts.map(post => (
-          <Post key={post.id} post={post} />
+      { error ? (<p>Something went wrong!</p> ):
+      isLoading ? (<p>Loading...</p>):
+      data?.map((post) => (
+        <Post post={post} key={post.id} />
       ))}
     </div>
   );
-};
+}
 
-export default Posts
+export default Posts;
