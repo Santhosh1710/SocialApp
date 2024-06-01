@@ -1,6 +1,7 @@
 @use "../../../src/style.scss" as *;
 .post {
-  @include themify($themes) {  -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+  @include themify($themes) {
+    -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
     -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
     box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
     border-radius: 20px;
@@ -15,10 +16,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-
+        position: relative;
         .userInfo {
-            display: flex;
-            gap: 10px;
+          display: flex;
+          gap: 10px;
           img {
             width: 40px;
             height: 40px;
@@ -31,38 +32,51 @@
             flex-direction: column;
             gap: 4px;
             .name {
-                font-weight: 500;
-                color: themed("textColor");
+              font-weight: 500;
+              color: themed("textColor");
             }
             .date {
-                font-size: 12px;      
+              font-size: 12px;
             }
+          }
+        }
+        button {
+          position: absolute;
+          top: 30px;
+          right: 5px;
+          border-radius: 5px;
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+          background-color: white;
+          &:hover {
+            background-color: red;
           }
         }
       }
 
-      .content{
+      .content {
         margin: 20px 0;
 
-        img{
-            width: 100%;
-            max-height: 500px;
-            object-fit: cover;
-            margin-top: 20px;
+        img {
+          width: 100%;
+          max-height: 500px;
+          object-fit: cover;
+          margin-top: 20px;
         }
       }
 
-      .info{
+      .info {
         display: flex;
         align-items: center;
         gap: 20px;
 
-        .item{
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            font-size: 14px;
+        .item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          font-size: 14px;
         }
       }
     }
